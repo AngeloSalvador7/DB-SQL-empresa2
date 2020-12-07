@@ -43,21 +43,21 @@ Create table trabaja_en(
 
 ALTER TABLE departamento ADD FOREIGN KEY (emp_superv) REFERENCES empleado (num_emp);
 
-/* - Ejercicio 1 */
+/* - Consulta 1 */
 SELECT DISTINCT PR.nom_proy
 FROM proyecto PR JOIN trabaja_en TRE ON PR.num_proy = TRE.num_proy
 				 JOIN empleado EMP ON TRE.num_emp = EMP.num_emp
 WHERE EMP.sueldo_emp > 100000.00;
 
 
-/* - Ejercicio 2 */
+/* - Consulta 2 */
 SELECT EMP.num_emp, EMP.nombre_emp, DEP.nom_dep, EMP.sueldo_emp
 FROM empleado EMP JOIN departamento DEP ON EMP.num_dep = DEP.num_dep
 WHERE EMP.num_emp NOT IN (SELECT num_emp
 						  FROM trabaja_en);
  
  
- /* - Ejercicio 3 */
+ /* - Consulta 3 */
 SELECT EMP.nombre_emp
 FROM empleado EMP WHERE NOT EXISTS( SELECT 1
 									FROM proyecto PRY
@@ -67,7 +67,7 @@ FROM empleado EMP WHERE NOT EXISTS( SELECT 1
 													  AND PRY.num_proy = TRE.num_proy));
  
  
- /* - Ejercicio 4 */
+ /* - Consulta 4 */
 SELECT EMP.nombre_emp, EMP.sueldo_emp
 FROM empleado EMP
 WHERE EMP.nombre_emp LIKE 'D%'
@@ -78,7 +78,7 @@ WHERE EMP.nombre_emp LIKE 'D%'
 				AND TRE.num_emp = EMP.num_emp);
  
  
- /* - Ejercicio 5 */
+ /* - Consulta 5 */
 UPDATE empleado EMP
 SET EMP.sueldo_emp = EMP.sueldo_emp + (EMP.sueldo_emp * 0.2)
 WHERE (SELECT COUNT(*)
@@ -87,14 +87,14 @@ WHERE (SELECT COUNT(*)
 		HAVING TRE.num_emp = EMP.num_emp) >= 2;
  
  
- /* - Ejercicio 6 */
+ /* - Consulta 6 */
 DELETE FROM proyecto PRY
 WHERE PRY.cod_loc IN (SELECT LOC.cod_loc
 					  FROM localidad LOC
 					  WHERE LOC.descripcion LIKE 'San Justo');
 
 
-/* - Ejercicio 7 */
+/* - Consulta 7 */
 SELECT DISTINCT EMP.num_emp, EMP.nombre_emp
 FROM empleado EMP JOIN trabaja_en TRE ON EMP.num_emp = TRE.num_emp
 WHERE EMP.nombre_emp NOT LIKE 'Carlos' 
@@ -103,14 +103,14 @@ AND TRE.num_proy IN (SELECT TRE2.num_proy
 					 WHERE EMP2.nombre_emp LIKE 'Carlos');
 
 
-/* - Ejercicio 8 */
+/* - Consulta 8 */
 INSERT INTO departamento(num_dep, nom_dep) 
 				 VALUES (24, "Archivos");
 INSERT INTO empleado(nombre_emp, sueldo_emp, num_dep) 
 			 VALUES ("Sergio Alvarez", 70500.00, 24);
 
 
-/* - Ejercicio 9 */
+/* - Consulta 9 */
 SELECT LOC.descripcion, AVG(PRY.importe) AS promedio_importe
 FROM proyecto PRY JOIN localidad LOC ON PRY.cod_loc = LOC.cod_loc
 GROUP BY LOC.cod_loc , LOC.descripcion
