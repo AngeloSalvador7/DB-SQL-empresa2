@@ -1,4 +1,4 @@
-/*					ESTRUCTURACIÓN DE LA BASE DE DATOS.						 */
+/*					ESTRUCTURACIÓN DE LA BASE DE DATOS.				 		  */
 
 CREATE DATABASE IF NOT EXISTS empresa;
 USE empresa;
