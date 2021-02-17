@@ -45,11 +45,6 @@ FOREIGN KEY (num_proy) REFERENCES proyecto (num_proy)
 
 ALTER TABLE departamento ADD FOREIGN KEY (emp_superv) REFERENCES empleado (num_emp);
 
-
-
-
-
-
 /*						CONSULTAS						 */
 
 /* - Seleccionar los nombres de proyectos donde haya empleados que ganen más de 100000. */
