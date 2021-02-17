@@ -1,6 +1,4 @@
-# Empresa-Database
-
-Consultas:
+# 'Queries' sobre base de datos de una empresa.
 
 1. Seleccionar los nombres de proyectos donde haya empleados que ganen más de 100000.
 2. Seleccionar el nombre y número del empleado, nombre del departamento y sueldo del
